@@ -35,15 +35,17 @@ cd dirname
 
 git init
 
+
+# start the git repo with the initial branch called main
+git init --inital-branch=main
+
+
+```
+
 // The basic way to start a repo
 
 ![image](https://github.com/zkrguan/my_git_notes/assets/97544709/650ded7a-1964-4cec-8a17-f8965e11ff83)
 
-git init --inital-branch=main
-
-// start the git repo with the initial branch called main
-
-```
 
 2. git status
 
