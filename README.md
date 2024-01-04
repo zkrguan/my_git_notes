@@ -42,32 +42,35 @@ git init --inital-branch=main
 
 ```
 
-// The basic way to start a repo
+### The basic way to start a repo
 
 ![image](https://github.com/zkrguan/my_git_notes/assets/97544709/650ded7a-1964-4cec-8a17-f8965e11ff83)
 
 
 2. git status
 
+
+
 ```md
-// this is checking the status of my repo. 
+# This is checking the status of my repo. 
 git status
 
+```
 ![image](https://github.com/zkrguan/my_git_notes/assets/97544709/f9538d3f-cf8e-4395-bc44-0ce65e0e7986)
 
 
-// if I create a file here here and type the git status again
-
+```
+# If I create a file and use git status to check again.
 touch file1
 
 git status
 
+```
+
 ![image](https://github.com/zkrguan/my_git_notes/assets/97544709/baee29c3-170f-4d79-9a69-049e2898527f)
 
 
-```
-
-What is untrack file then?
+### What is untrack file then?
 
 You added the file but git does not have a snap shot of it, which means git is not currently tracking the file.
 
@@ -76,15 +79,14 @@ So how to make the git track this new file?
 3.  git add
 
 ```md
+# git add fileName will move the file into the staging area. 
 
 git add fileName
 
+```
 ![image](https://github.com/zkrguan/my_git_notes/assets/97544709/78800d2a-0ea0-4973-b82e-ca37be762fb2)
 
-```
-git add fileName will move the file into the staging area. 
-
-But first of all, what is a staging area?
+### But first of all, what is a staging area?
 
 It is not visiable inside the repo. But it is acting like a cache. So cache of what? *** cache of the current state of the file *** the staging area tells the git what the next file snapshot will look like. So, staging area is like ready to make snapshot area.  
 
@@ -96,12 +98,13 @@ This is making the snapshot official and recorded by git.
 
 ```md
 
-// the most common way to make commit
+# the most common way to make commit
 git commit -m "the summary"
 
-![image](https://github.com/zkrguan/my_git_notes/assets/97544709/a6ef9167-ad95-418b-8801-1f64ed8255f2)
 
 ```
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/a6ef9167-ad95-418b-8801-1f64ed8255f2)
 
 5. git log
 
@@ -111,14 +114,12 @@ This is the way to check where you at regarding commits.
 
 git log 
 
-// As you notice commit name is hashed.
+```
+As you notice commit name is hashed.
 
 ![image](https://github.com/zkrguan/my_git_notes/assets/97544709/6ed4e900-9a43-4dba-b98c-1df30c6faa64)
 
-```
 actually git stores all the histories inside the git/objects/ 
-
-
 
 ### Why would you bother to have a staging area? It is like a waste of the step...
 
@@ -134,17 +135,17 @@ C. Staging also can help people resolve conflicts when merging a branch.
 6. git diff
 
 ```
-// This is a command used combo with git status
+# This is a command used combo with git status
 
 git status
 
 git diff
 
-// example use case I modified and then want to check what I have changed
-
-![image](https://github.com/zkrguan/my_git_notes/assets/97544709/ea832053-eb0d-451b-8c89-f258d35c2e74)
+# example use case I modified and then want to check what I have changed
 
 ```
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/ea832053-eb0d-451b-8c89-f258d35c2e74)
 
 \+ meaning added
   
