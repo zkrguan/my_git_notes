@@ -26,7 +26,7 @@ Also the idea of forking and merging is very simple to do in git but not in othe
 
 Whenever you type commands, git will change the content inside the .git dir. 
 
-1. Git init
+* Git init
   You barely would need this command because 90% of the time other coders already started the repo. 
 
 ```md
@@ -47,9 +47,7 @@ git init --inital-branch=main
 ![image](https://github.com/zkrguan/my_git_notes/assets/97544709/650ded7a-1964-4cec-8a17-f8965e11ff83)
 
 
-2. git status
-
-
+* git status
 
 ```md
 # This is checking the status of my repo. 
@@ -76,7 +74,7 @@ You added the file but git does not have a snap shot of it, which means git is n
 
 So how to make the git track this new file?
 
-3.  git add
+* git add
 
 ```md
 # git add fileName will move the file into the staging area. 
@@ -92,7 +90,7 @@ It is not visiable inside the repo. But it is acting like a cache. So cache of w
 
 Think about the hell's kitench. Second line cooks prepare the ingredients for the first line cook. And first line has a area for the processed ingredients from the second line. That area is a perfect example of the staging area.
 
-4. git commit
+* git commit
 
 This is making the snapshot official and recorded by git.
 
@@ -106,7 +104,7 @@ git commit -m "the summary"
 
 ![image](https://github.com/zkrguan/my_git_notes/assets/97544709/a6ef9167-ad95-418b-8801-1f64ed8255f2)
 
-5. git log
+* git log
 
 This is the way to check where you at regarding commits. 
 
@@ -132,7 +130,7 @@ B. It is making easy for other coders to review the changes inside the git log.
 C. Staging also can help people resolve conflicts when merging a branch.
 
 
-6. git diff
+* git diff
 
 ```
 # This is a command used combo with git status
