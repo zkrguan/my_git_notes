@@ -214,4 +214,168 @@ You don't have the write access to the github repo. Forking makes you have your 
 
 If you are the contributor, you could even create PR to make contributions to the upstream repo. 
 
-________________________________________________End of the basic commands________________________________
+________________________________________________ End of the basic commands _____________________________________________
+
+# Branch and Tag
+
+Back to the logic of git, git uses the hash values to name each commit like the pic below, and it is very good because the hashed name will never be same unless the files are identical on the byte level.
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/b509a265-912a-4072-a391-43d8cc178a32)
+
+It is good for the computer, but to the developers, how can you just let your coworker know you are on commit abc79c0695af38931da06ade20b85c2224fc682a? It is such a headache to talk to each others. 
+
+As a matter of fact, git provides two tools for handling communication between developers rather than using the hashed values.
+
+## git tag
+
+```
+
+# starting from cloning my school's open source project.
+
+git clone https://github.com/Seneca-CDOT/telescope.git telescope
+
+
+# check tags
+
+git tag
+
+```
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/1bda2030-6dc5-4253-b588-b183f913af75)
+
+These number meaning?
+
+Each tag means a release. So my school's project has 57 releases. 
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/46f04a42-475b-4699-9bbf-e773f593889b)
+
+If you click into, you could see more detail information about each releases. Each release means a version of softwares. 
+
+Instead of hashed commits, you only need to document the release tag names and the description of each release, which makes this easier. So tag is just a aliase to a commit. 
+
+How to make a release then? 
+
+```
+
+# This is only one of the many ways to make the tags. 
+
+git tag -a version code -m "Your release message goes here"
+
+```
+
+Let's say the developers are working on the newer version, but the users are having issues with the older version. The developers are assigned to work on the old versions to resolve the bug. Introduce time machine git checkout.
+
+### git checkout ( the time machine ) 
+
+```
+# use git checkout to rewind the time to version 0.6.0
+
+git checkout 0.6.0
+
+```
+
+The screenshot tells 
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/e542f83f-4623-41a1-8cd5-f6ad37d3b7c6)
+
+Yep, I made my HEAD sit on the first release commit made by my prof 3 years ago.
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/e488c668-a545-402f-9352-3ad7fad171d6)
+
+This will do the same thing as well, but with the hashed value from the git commit.
+
+```
+# use git checkout to rewind the time to version 0.6.0's commit 
+
+git checkout 8e984f9545922e7c033f4377ff5729d1bf0d041c
+
+# Or you could use first 8 letters will do the same too
+
+git checkout 8e984f95
+
+# to quickly go to the most recent commit
+
+git checkout master
+
+```
+
+Although tag is good, branch is more often used in the production environment. 
+
+## git branch
+
+Branches are totally local before you upload the branches to the Github. 
+
+```
+
+# This will list all the avaliable branches
+
+git branch
+
+```
+
+You see the HEAD is pointing at the master branch. 
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/0b165035-3419-475d-a388-5046c91cf4fb)
+
+```
+
+# how you create a new branch
+
+git branch branchNameGoesHere
+
+```
+
+Like this is how I created a new branch in my local repo. (reminds me the old time working with friends.)
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/44f13a58-7c7e-411b-bb88-4a4113a6437b)
+
+
+```
+
+# This is how move from one branch to another
+
+git checkout branchName
+
+```
+
+Notice the head to pointed at newly created branch.
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/c31d5a0c-e20d-487b-81a7-1cdaef0933b3)
+
+```
+# Normally you would use this to do avoid type two commands 
+# creating new branch and swithcing to that branch at the same time.
+git checkout -b branchName
+
+```
+
+
+Be aware that all the commits will be added to the branch while you are on that branch. So the branches makes the developers an isolated space for them to work on without effecting others. After you switch to another branches, you could not see the commits because those commits are sitting on the other branch. 
+
+IF YOU CHANGE FILES AND DID NOT COMMIT, AND THEN YOU WANT TO SWITCH BRANCH. GIT WILL BLOCK YOU FROM DOING THAT. 
+
+Also, when you make a new branch, the previous commits will be brought over depends on which was your current branch.
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/a3d2b20b-1f96-41fb-ba0c-15a2ced8dfe8)
+
+If you don't want the branch because it is total failure. 
+
+```
+git checkout master
+
+# If you DO NOT have commits did not bring to the master
+git branch -d branchName
+
+# If you have commits that don't need anymore for the master
+git branch -D branchName
+
+```
+
+Demo:
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/204b7513-b155-4053-a909-a39bcce6504c)
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/5f81f4d6-429a-4582-8f24-ec64c404e4a9)
+
+
+
