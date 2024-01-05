@@ -86,6 +86,10 @@ It is not visiable inside the repo. But it is acting like a cache. So cache of w
 
 Think about the hell's kitench. Second line cooks prepare the ingredients for the first line cook. And first line has a area for the processed ingredients from the second line. That area is a perfect example of the staging area.
 
+### Why you don't want to use git add * or git add . ?
+
+Because you will add too much into the staging area. 
+
 ## git commit
 
 This is making the snapshot official and recorded by git.
@@ -148,4 +152,56 @@ git diff
 +1 -1 meaning I added one removed one ,2 meaning there are totally 2 lines changed.
 
 
+## git rm fileName
+
+```
+# This will do two things.
+
+# 1. remove the file from the staging area.
+ 
+# 2. remove the file from the working repo on the computer. 
+
+git rm fileName
+
+```
+A perfect example of walking through git rm fileName
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/5186238e-55d6-414d-ace4-881e55eab404)
+
+But did you remove the file totally? No because inside .git, there is a previous version of the working repo. So there is a way to recover back from the file. Will be covered in the next section. 
+
+## git restore fileName
+
+```
+# Be aware that this is NOT restoring the file from the .git
+# This is restoring from the staging area.
+
+git restore fileName
+
+```
+
+Some experiments
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/b86d44e3-59da-423c-8a23-69518aa877d7)
+
+## git clone repoName
+
+```
+# This will literally clone everything from the other git repo even the histories.
+
+git clone gitRepoName newRepoName
+
+# most commonly you would use this command combined with the github url for example
+
+git clone url localRepoName
+
+```
+
+example of proving copying everything from the local repo
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/c250f870-41d7-4757-b4fe-7871b74bec99)
+
+example of copying one from the github with github URL
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/a69056bf-5ad0-43e0-90f0-4a544e3cded7)
 
