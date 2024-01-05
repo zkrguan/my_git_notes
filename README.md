@@ -205,3 +205,13 @@ example of copying one from the github with github URL
 
 ![image](https://github.com/zkrguan/my_git_notes/assets/97544709/a69056bf-5ad0-43e0-90f0-4a544e3cded7)
 
+
+*** github forking is just like git cloning. ***
+
+Why forking?
+
+You don't have the write access to the github repo. Forking makes you have your own copy of the code from the upstream repo. Changes will be saved into your forked version. 
+
+If you are the contributor, you could even create PR to make contributions to the upstream repo. 
+
+________________________________________________End of the basic commands________________________________
