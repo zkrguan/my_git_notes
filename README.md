@@ -377,5 +377,146 @@ Demo:
 
 ![image](https://github.com/zkrguan/my_git_notes/assets/97544709/5f81f4d6-429a-4582-8f24-ec64c404e4a9)
 
+________________________ End Of the branch and tag ________________________
 
+
+# merge, diff, and more
+
+## git diff
+
+```md
+# git diff can be used to check the difference in the staging area and the commited works
+
+git diff
+
+# or you could use git diff commit1 commit2 in order to compare both commit's difference
+
+git diff commit1 and commit2
+
+```
+
+this command will show what is the difference between two commits. 
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/a064d31d-2f68-4358-9f17-0b333380abb1)
+
+
+## git merge
+
+When we want to bring the commits from ONE branch to ANTOHER branch, there are multiple ways. The following screen shot shows how did I create a new branch and then make commit on the new branch. 
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/859f8617-4ff3-4530-b89a-124a3820b905)
+
+You can see the testingBranch is what people called 1 commit ahead of the main
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/ba24f9d0-4766-48de-a357-d6e785dfcf29)
+
+If you want to bring the commit from the testingBranch to the main branch, we could use git merge
+
+### First approach ( ideal case )
+```
+
+# Step1 move to the branch you would like to merge the commits TO:
+
+git checkout master
+
+# Step2 merge
+
+git merge branchName
+
+```
+Demo:
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/90a22b89-d9fc-49eb-aadb-effc333be051)
+
+Output:
+
+Notice your main and the testingBranch are on the same commit now.
+
+This is ideal case of the merge because of the fast forward merge.
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/18f3cf29-3d06-4eca-bbbb-a13bc892b604)
+
+
+```
+
+# This will actually make the master branch go back to the commit you provided
+# Understand this as a reset
+
+git checkout -B master commitName
+
+# You could actually specify how to merge for example this command below
+
+git merge --ff-only branchName
+
+```
+
+You recover the branch by using git checkout -B 
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/6e3dc121-3236-4b20-a8b4-3cb66dc30339)
+
+However, not everytime, when you are trying to merge your branch, the master (main) has no changes. 
+
+Because think about it, your team has more than 400 coders, the main is constantly updating by every coder. 
+
+So the second approach is here. 
+
+### second approach ( real in the production )
+
+#### issue identify
+
+Like I mentioned on the above, the master is heading to a direction that testingBranch is not going. 
+
+Why you cannot see the where the master is?
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/81d3a606-7708-48e0-9859-53dc2fa213e3)
+
+As a result, I still use git merge --ff-only testingBranch
+
+It shows an error:
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/0db26ab2-e19a-4eb8-b1b6-a8550cc4a72f)
+
+Because file2's first line has two versions now. Git is confused which version should it use. So the auto merge won't work because of the conflict.
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/6fff3106-adb1-4b34-a89b-6faf1a439651)
+
+If you type down git status from the main branch, here is how it looks. 
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/7af80269-7f65-44e5-94ae-9c99cde89b2f)
+
+#### Already, so how to finish the merge?
+
+open the file with conflict with your favorite editor. 
+
+git already marked the conflicted area for ya. 
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/149bb019-23c3-4a03-aed8-b2d18bb2098c)
+
+The equal signs divide the two versions. And the version has been marked for you. 
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/65a25b82-ee64-4021-b6b9-abaf9f90c72e)
+
+So you just need to clear the special symbols + the version you want to keep. 
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/b27468f5-7b14-4b08-a3b5-e2be2302e635)
+
+After modify, you still have to add and commit. 
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/d70e2815-b773-4913-9d43-55bfe53c7a8e)
+
+Yep, so this is how you manually merge them. And you notice the lastest commit is just like a bridge merged two branches together. 
+
+This is called ** recursive merge **. 
+
+### Bonus abort merge:
+
+Sometimes the conflict is too big. You don't know what to do, and you don't want to leave the mess behind. 
+
+```
+
+git merge --abort
+
+```
+
+____________ end of the git merge ____________
 
