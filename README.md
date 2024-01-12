@@ -759,10 +759,98 @@ What is the proper way then?
 git pull remoteName branchName
 
 # now it should be good to push.
-
 git push remoteName branchName
 
+```
+
+_________ end of the git remote section _________
+
+
+# git rebase 
+
+## git commit --amend
+
+### replace the previous commit
+
+Before rebase, here is how to fix a commit has been made by you. 
+
+```md
+
+git commit --amend
 
 ```
+This will show the most recent commit you made on this branch
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/5dd60fc5-838a-44b6-9c9e-59f42bbc0741)
+
+You could actually make changes for the commit message you made by using the editor. 
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/d486af84-7faf-43be-a5f1-e5ab67ebe9fe)
+
+Save and check with git log, the commit message was changed. 
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/8947f1c5-2c8f-4af0-8fa5-a82676669fa3)
+
+
+What we have done? We just changed the history of the git. The example above is easy, but look at here. 
+
+git commit --amend is actually making a new commit to replace the most recent commit. 
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/0939e16c-608a-4810-ad1f-2b3efa7ec871)
+
+If I want to push the changes now, it won't work. ( my github auth had problems used prof's vid snip)
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/43773e5d-f86c-4f98-9acd-371443298bf5)
+
+Because your GitHub repo is sitting on the old commit (c1)
+
+Your local is sitting on the new commit made by the commit --amend (c2)
+
+What you should do now? 
+
+```md
+
+git push origin master --force
+
+```
+WTF you just told me don't do this now you told me this is the solution?
+
+Here is the reason. Remember this will **eliminate** the commit on the GITHUB and **push the local commit** to the branch. 
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/f4206ff8-7635-4873-8848-60d03e8f1527)
+
+At the end, only the second commit exists. 
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/477a0269-3d3b-432f-af80-f07ef2c1ba95)
+
+### add the current commit to the previous commit. 
+
+After made a commit, you forget to add something in the readme, and you don't want to create a new commit for fixing it. 
+
+Here is how we do this.
+
+```
+
+# edit
+
+# git add the file to the staging area
+
+git add fileName
+
+# make commit but no need to change the commit message
+
+git commit --amend --no-edit
+
+```
+
+You just slide the changes into the previous commit, which saves some hassels. 
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/6d089d78-a9c7-4b4d-a25f-487808aa73ba)
+
+add -> amend --no-edit
+
+none of these above are as powerful as this one here. 
+
+## git rebase
 
 
