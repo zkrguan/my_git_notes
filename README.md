@@ -637,6 +637,32 @@ git pull upstream/master
 
 ```
 
+But what is the use of these remote, fetch, merge of the above mentioned commands. You could actively work with the developers in your team when you have a problem. How? 
+
+## Work flow demo
+
+### Starting point. 
+```
+     #1.forked the project to your own github
+
+     #2. Add the upstream remote
+
+          git remote -add upstream URL
+
+     #3. This will download all the remote branches and tags and more to your forked repo.
+
+          git fetch upstream
+
+     #4. Then make sure you are on the main of the forked version, then merge with the upstream master(or main)
+
+          git merge upstream/master
+
+
+     #As a matter of fact, in the product env, you could do step 3 and 4 constantly every morning maybe to keep updated with your upstream repo. 
+```
+
+### Helping out Pattern
+
 
 
 
