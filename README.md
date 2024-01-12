@@ -571,4 +571,72 @@ Now it is added, but how does this work?
 
 ![image](https://github.com/zkrguan/my_git_notes/assets/97544709/ad98a503-cfae-416d-8537-ad28c668232d)
 
+## git fetch origin
+
+```
+# this won't have anything happen because there is no commits has been made to the forked repo. 
+
+git fetch origin
+
+# But what if I fetch from the upstream which I just set up from the command above.
+
+git fetch upstream
+
+```
+
+A whole buntch of tags and branches got brought over to here from the upstream:
+
+*FETCH* WILL ONLY DOWN LOAD BUT NOT UPDATE CHANGES
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/78774812-9d18-4f32-8fc9-dc0a9f8cdcd7)
+
+## remote branches
+
+first two commands are quite easy to understand. But what about the command with -a
+
+```
+
+# This will print out all the remote branches
+
+git branch -a
+
+
+```
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/ba4102fc-8305-419b-b8f3-75b6c4e5b411)
+
+what if I want to switch onto those remote branches?
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/d9ea947c-ce9c-4925-8eb3-aed73756e218)
+
+Prove I was not lying:
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/2685ee07-ae85-4114-8e9e-6239854b8f72)
+
+You see the how to git add remote git fetch download and bring the branches and tags from the upstream repo. 
+
+Sometime you could just use git merge upstream master to bring the new commmits back to the forked version
+
+```
+# This is very nice when the merge is fast forward merge
+
+git merge upstream/master
+
+```
+
+## git pull
+
+When you do a pull, it will fetch and merge the upstream master to the local master. This could cause files changes, and sometimes the changes can be unwanted. 
+
+It is just like the two commands we made from the above.
+
+```
+# although you learned this long time ago, it is still very dangerous to use because it could bring the unwanted changes. 
+
+git pull upstream/master
+
+```
+
+
+
 
