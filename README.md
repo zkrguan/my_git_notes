@@ -520,3 +520,55 @@ git merge --abort
 
 ____________ end of the git merge ____________
 
+
+# remote git ( mainly about github and the git commands related )
+
+## Up stream repo and github fork
+
+Think about the source of St.lawrence is Lake Ontario. Lake Ontario is the up stream repo of the St.Lawrence. 
+
+Most github Projects you won't have the access to commit or other things. That's why the github allows you to FORK. 
+
+upstream repo
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/88bf5b31-d29a-4682-a1f8-293703ba740c)
+
+forked version
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/1a01d287-19fc-4159-a496-9f3c7c43fac3)
+
+Then, on your forked version, you could git clone to your own computer and then make commits to it. 
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/bdcf198b-11b2-41aa-8495-cb4d6e8ed2df)
+
+Finally, after finishing editing, you could just update the upstream repo by using PR or other tools. 
+
+( I'd better not mess around with them )
+
+## git remote
+```
+#This is to where the current repo orginated from 
+
+git remote -v
+
+```
+Example here shows the forked version and the original version 
+
+the git remote command shows where the code comes from
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/01997f03-4ea0-437d-9a0d-f733f2974ada)
+
+```
+
+#You could also add a remote instead of forking it
+#Example here I used this to add the add a remote in the forked version
+
+git remote add upstream https://github.com/Seneca-CDOT/telescope.git
+
+```
+
+Now it is added, but how does this work?
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/ad98a503-cfae-416d-8537-ad28c668232d)
+
+
