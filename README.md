@@ -132,7 +132,7 @@ C. Staging also can help people resolve conflicts when merging a branch.
 
 ## git diff
 
-```
+```md
 # This is a command used combo with git status
 
 git status
@@ -154,7 +154,7 @@ git diff
 
 ## git rm fileName
 
-```
+```md
 # This will do two things.
 
 # 1. remove the file from the staging area.
@@ -172,7 +172,7 @@ But did you remove the file totally? No because inside .git, there is a previous
 
 ## git restore fileName
 
-```
+```md
 # Be aware that this is NOT restoring the file from the .git
 # This is restoring from the staging area.
 
@@ -186,7 +186,7 @@ Some experiments
 
 ## git clone repoName
 
-```
+```md
 # This will literally clone everything from the other git repo even the histories.
 
 git clone gitRepoName newRepoName
@@ -228,7 +228,7 @@ As a matter of fact, git provides two tools for handling communication between d
 
 ## git tag
 
-```
+```md
 
 # starting from cloning my school's open source project.
 
@@ -255,7 +255,7 @@ Instead of hashed commits, you only need to document the release tag names and t
 
 How to make a release then? 
 
-```
+```md
 
 # This is only one of the many ways to make the tags. 
 
@@ -267,7 +267,7 @@ Let's say the developers are working on the newer version, but the users are hav
 
 ### git checkout ( the time machine ) 
 
-```
+```md
 # use git checkout to rewind the time to version 0.6.0
 
 git checkout 0.6.0
@@ -284,7 +284,7 @@ Yep, I made my HEAD sit on the first release commit made by my prof 3 years ago.
 
 This will do the same thing as well, but with the hashed value from the git commit.
 
-```
+```md
 # use git checkout to rewind the time to version 0.6.0's commit 
 
 git checkout 8e984f9545922e7c033f4377ff5729d1bf0d041c
@@ -305,7 +305,7 @@ Although tag is good, branch is more often used in the production environment.
 
 Branches are totally local before you upload the branches to the Github. 
 
-```
+```md
 
 # This will list all the avaliable branches
 
@@ -317,7 +317,7 @@ You see the HEAD is pointing at the master branch.
 
 ![image](https://github.com/zkrguan/my_git_notes/assets/97544709/0b165035-3419-475d-a388-5046c91cf4fb)
 
-```
+```md
 
 # how you create a new branch
 
@@ -330,7 +330,7 @@ Like this is how I created a new branch in my local repo. (reminds me the old ti
 ![image](https://github.com/zkrguan/my_git_notes/assets/97544709/44f13a58-7c7e-411b-bb88-4a4113a6437b)
 
 
-```
+```md
 
 # This is how move from one branch to another
 
@@ -342,9 +342,10 @@ Notice the head to pointed at newly created branch.
 
 ![image](https://github.com/zkrguan/my_git_notes/assets/97544709/c31d5a0c-e20d-487b-81a7-1cdaef0933b3)
 
-```
+```md
 # Normally you would use this to do avoid type two commands 
 # creating new branch and swithcing to that branch at the same time.
+
 git checkout -b branchName
 
 ```
@@ -360,7 +361,7 @@ Also, when you make a new branch, the previous commits will be brought over depe
 
 If you don't want the branch because it is total failure. 
 
-```
+```md
 git checkout master
 
 # If you DO NOT have commits did not bring to the master
@@ -413,7 +414,7 @@ You can see the testingBranch is what people called 1 commit ahead of the main
 If you want to bring the commit from the testingBranch to the main branch, we could use git merge
 
 ### First approach ( ideal case )
-```
+```md
 
 # Step1 move to the branch you would like to merge the commits TO:
 
@@ -512,7 +513,7 @@ This is called ** recursive merge **.
 
 Sometimes the conflict is too big. You don't know what to do, and you don't want to leave the mess behind. 
 
-```
+```md
 
 git merge --abort
 
@@ -546,7 +547,7 @@ Finally, after finishing editing, you could just update the upstream repo by usi
 ( I'd better not mess around with them )
 
 ## git remote
-```
+```md
 #This is to where the current repo orginated from 
 
 git remote -v
@@ -558,7 +559,7 @@ the git remote command shows where the code comes from
 
 ![image](https://github.com/zkrguan/my_git_notes/assets/97544709/01997f03-4ea0-437d-9a0d-f733f2974ada)
 
-```
+```md
 
 #You could also add a remote instead of forking it
 #Example here I used this to add the add a remote in the forked version
@@ -573,7 +574,7 @@ Now it is added, but how does this work?
 
 ## git fetch origin
 
-```
+```md
 # this won't have anything happen because there is no commits has been made to the forked repo. 
 
 git fetch origin
@@ -594,7 +595,7 @@ A whole buntch of tags and branches got brought over to here from the upstream:
 
 first two commands are quite easy to understand. But what about the command with -a
 
-```
+```md
 
 # This will print out all the remote branches
 
@@ -617,7 +618,7 @@ You see the how to git add remote git fetch download and bring the branches and 
 
 Sometime you could just use git merge upstream master to bring the new commmits back to the forked version
 
-```
+```md
 # This is very nice when the merge is fast forward merge
 
 git merge upstream/master
@@ -628,41 +629,140 @@ git merge upstream/master
 
 When you do a pull, it will fetch and merge the upstream master to the local master. This could cause files changes, and sometimes the changes can be unwanted. 
 
-It is just like the two commands we made from the above.
+It is just like a combination of the two commands we made from the above.
 
-```
+```md
 # although you learned this long time ago, it is still very dangerous to use because it could bring the unwanted changes. 
 
 git pull upstream/master
 
 ```
+**Never run this on a topic branch** Because this will change files. Only run this on your main. 
 
 But what is the use of these remote, fetch, merge of the above mentioned commands. You could actively work with the developers in your team when you have a problem. How? 
 
 ## Work flow demo
 
-### Starting point. 
-```
-     #1.forked the project to your own github
+### Basic pattern. 
+```md
+     # 1.forked the project to your own github
 
-     #2. Add the upstream remote
+     # 2. Add the upstream remote
 
           git remote -add upstream URL
 
-     #3. This will download all the remote branches and tags and more to your forked repo.
+     # 3. This will download all the remote branches and tags and more to your forked repo.
 
           git fetch upstream
 
-     #4. Then make sure you are on the main of the forked version, then merge with the upstream master(or main)
+     # 4. Then make sure you are on the main of the forked version, then merge with the upstream master(or main)
 
           git merge upstream/master
 
 
-     #As a matter of fact, in the product env, you could do step 3 and 4 constantly every morning maybe to keep updated with your upstream repo. 
+     # As a matter of fact, in the product env, you could do step 3 and 4 constantly every morning maybe to keep updated with your upstream repo.
+     # git pull upstream master could be used more often because 1 < 2. But sometimes, you do care what you are merging. Use 2 step approach. 
 ```
 
-### Helping out Pattern
+### Handling PR branches from the remote (Senior level?)
+
+First of all, PR is a request to merge from a branch to another branch. That upcoming branch can be from the same repo or forked repo of the other team members.
+
+So this git pattern is made for Senior to check your work. 
 
 
+```md
+
+# Senior POV there is a new PR created for the working repo.
+
+     Go to github PR, and check which guy's which branch was trying to merge with the main. (normally junior could only merge to the dev, and senior would do the PR from the dev to the main because there are CD pipelines in the main)
+
+# Then the senior will go to the junior's forked repo and copy the https URL. Then add the remote to senior's remote
+
+     git remote -v
+
+     git remote add juniorName juniorURL
+
+     git remote -v
+     
+# Then copy the junior's repo's branches from the remote.
+
+     git fetch junior'sName
+
+# Create a branch on Senior's branch based on Junior's Branch
+# This is creating a branch to track junior's branch from a senior's repo's branch
+
+    git checkout -b meaningfulName juniorName/juniorPrBranchName
+     
+# Then you can test the junior's branch from your local machine in your tracker branch.
+# After confirming everything is good, you could just merge the PR.
+
+```
+
+*don't ever commit anything on the main (unless it is an emergency fix)*
+
+## git push 
+
+This will send all the commits to the remote you sepcified 
+
+```md
+
+# assume you make a hot fix and commited on your local 
+
+# this is pushing to the github repo so the CICD pipe line will deploy the rest into your container. 
+
+git push origin master
+
+__________________________________
+
+# or even you created a new branch
+
+git checkout -b newBranch
+
+# you commit your changes
+
+# you push everything up to the forked repo.
+
+git push origin master
+
+# Now you would see a branch created on the github of your forked repo.
+
+```
+### always remember pull first then push 
+
+Think if one of you pushed the changes to the main. 
+
+The other forgot to pull the change and made commits and now he is ready to push. 
+
+What will happen?
+
+git will reject your change request. 
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/14836bed-0501-4a4d-9ef1-cae76bcfde05)
+
+Bruh what now? Never never do the command below, this will destory everything. 
+Git will delete the commit made by the other person and upload the commit. (your commit replaced the other person's commit which is wild!!!) 
+
+*yell at gpt4 if it is giving this anwser*
+
+~git push origin issue-555 --force~
+
+What is the proper way then?
+
+### if you forgot to pull and made commits
+
+```md
+# It is not too late to pull.
+# If there is conflict, resolve them with your team mate.
+# This will create a recursive merge ( you will see a PR made and merge automatically)
+
+git pull remoteName branchName
+
+# now it should be good to push.
+
+git push remoteName branchName
+
+
+```
 
 
