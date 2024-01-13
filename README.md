@@ -853,4 +853,62 @@ none of these above are as powerful as this one here.
 
 ## git rebase
 
+I had issues while I am developing on the feature, at the same time, @kev fixed some of his login logics. As a result, my topic branch is not updated with the master branch because Kev merged his branch with PR. 
+
+At that moment, I started PR **FROM** main **to** my branch. But it could create tons of conflicts if I was working on log in logics too. 
+
+Anywaybetter ways to resolve this? 
+
+git rebase is working like a time machine. You travel back to where you forked. 
+
+### step by step using git rebase to clean the git histories
+
+```md
+
+# make sure you are on the topic branch then
+# this command will calculate the difference between your branch and the master branch
+git rebase branchName  
+
+```
+
+First I made changes (readme) on the MASTER:
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/feddcbed-d02d-461b-8ccd-2f14b9007d44)
+
+Then of course changes are remained on the MASTER. I went to the topic branch, and indeed changes are not showing.
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/384bf981-3437-4f32-9bae-822da3525f2d)
+
+Then I ran the git rebase master
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/b1b2f657-6880-49e3-9ee3-3f3cd072750e)
+
+Boom the changes are here now.
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/a13044ee-fc77-430d-8956-2bf19374548c)
+
+You could understand that git rebase branchName will make the current branch carry all the commits from the branchName. So it is like the previously the topic branch is based on one commit. Now, after git rebase, the topic branch is based on the most current commit from the branchName. (Like changing a new base for a building.)
+
+Think about a old PR you forgot to merge. When you try to merge it, you realize this is too old and it is not good idea to merge it. It will be the perfect one to use git rebase master to update it with the master's most recent commit. 
+
+If there are too many conflicts, you could just follow the commands from the terminal to either abort, skip, or more. 
+
+```md
+
+# If the situation is more complicated, use **interactive rebase**
+
+git rebase master -i
+
+```
+
+You can manually choose what to do with each commit. 
+
+![image](https://github.com/zkrguan/my_git_notes/assets/97544709/0710808a-c31c-4a73-9c5e-5b1a91ee75e0)
+
+melding meaning combining second one into the first one. So made it to a single commit. 
+
+You basically just put the words front of each commit, so the git will do the instructions you specified. 
+
+Save and exit, git will ask you to make a commit message. 
+
 
